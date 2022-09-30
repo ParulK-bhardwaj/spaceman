@@ -1,0 +1,54 @@
+Spaceman Pseudocode
+
+IMPORT random to generate random word for the Spaceman game
+
+
+Load_word:
+	READ from the text file containing words
+	GENERATE a random word to use as secret from the word text file
+	DISPLAY the Secret word to be used in the game
+
+Get_guessed_word:
+	INPUTS the Secret word from the Load_word method
+		and the Letters that are guessed by the player so far
+	SET number of letters in the secret word to be as same number of blanks
+	
+	DOFOR 
+		the Number of letters in the Secret words (it will loop as many times as the letters in the secret word to match the letters guessed with secret word letters)
+		DISPLAY the guessed letters that match and remaining underscores/blanks
+	ENDDO
+	
+Is_word_guessed:
+	INPUTS the Secret word from the Load_word method
+		and the Letters that are guessed by the player so far
+
+	IF the guessed letter by user is in secret word then 
+		DISPLAY “Your guess appears in the word!”
+		RETURN True
+	ELSE 
+		DISPLAY “Sorry your guess was not in the word, try again”
+        DISPLAY "You have _ incorrect guesses left"
+		RETURN False
+    ENDIF
+
+Spaceman:
+	DISPLAY “Welcom to Spaceman!”
+	COUNT/COMPUTE the number of letters in the secret word
+	DISPLAY “The secret word contains”: number of letters
+	DISPLAY “You have _  incorrect guesses, please enter one letter per round” 
+DOWHILE
+    IF all the letters are guessesd
+        DISPLAY "Congrats, You Won!"
+    ELSE
+        DISPLAY "Sorry you didn't win, try again!"
+        DISPLAY the secret word as "The word was: secret word"
+    ENDIF
+
+    PROMPT User to provide yes or no by asking “Would you like to play again? (yes/no) >”
+    GET player input
+    IF user input is yes
+        REPEAT
+    ELSE 
+    ENDIF
+ENDDO
+		
