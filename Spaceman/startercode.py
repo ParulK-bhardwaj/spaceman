@@ -60,7 +60,12 @@ def is_guess_in_word(guess, secret_word):
 
     '''
     #TODO: check if the letter guess is in the secret word
-
+    blank_number = f"{'_' * len(secret_word)}"
+    print(blank_number)
+    for i in range(len(secret_word)):
+        if guess_by_player in secret_word:
+            # print(letters_guessed)
+        
     pass
 
 
