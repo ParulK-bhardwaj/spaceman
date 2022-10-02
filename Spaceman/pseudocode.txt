@@ -17,8 +17,22 @@ Get_guessed_word:
 		the Number of letters in the Secret words (it will loop as many times as the letters in the secret word to match the letters guessed with secret word letters)
 		DISPLAY the guessed letters that match and remaining underscores/blanks
 	ENDDO
-	
+
 Is_word_guessed:
+	INPUTS the Secret word from the Load_word method
+		and the Letters that are guessed by the player so far
+	SET number of letters in the secret word to be as same number of blanks
+	SET the list of letters that user guessed as letters_guessed 
+	
+	DOFOR 
+		the Number of letters in the Secret words (it will loop as many times as the letters in the secret word to match the letters guessed with secret word letters)
+	ENDDO
+IF letter_guessed =  secret_word
+	RETURN True
+ELSE Return False
+
+	
+Is_guess_in_word:
 	INPUTS the Secret word from the Load_word method
 		and the Letters that are guessed by the player so far
 
