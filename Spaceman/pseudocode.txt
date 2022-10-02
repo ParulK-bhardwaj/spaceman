@@ -27,9 +27,9 @@ Is_word_guessed:
 	DOFOR 
 		the Number of letters in the Secret words (it will loop as many times as the letters in the secret word to match the letters guessed with secret word letters)
 	ENDDO
-IF letter_guessed =  secret_word
-	RETURN True
-ELSE Return False
+	IF letter_guessed =  secret_word
+		RETURN True
+	ELSE Return False
 
 	
 Is_guess_in_word:
@@ -49,7 +49,10 @@ Spaceman:
 	DISPLAY “Welcom to Spaceman!”
 	COUNT/COMPUTE the number of letters in the secret word
 	DISPLAY “The secret word contains”: number of letters
-	DISPLAY “You have _  incorrect guesses, please enter one letter per round” 
+	PROMPT User to provide one letter per round by asking "You have _  incorrect guesses, please enter one letter per round >"
+    	GET player input
+	
+	
 DOWHILE
     IF all the letters are guessesd
         DISPLAY "Congrats, You Won!"
