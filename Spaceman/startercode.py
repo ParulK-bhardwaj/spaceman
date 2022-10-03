@@ -1,3 +1,4 @@
+from curses.ascii import isalpha
 import random
 
 
@@ -44,12 +45,12 @@ def is_word_guessed(secret_word, correct_guesses):
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
 
-    player_guessed_word = ""
+    player_guess = ""
     
     for i in range(len(secret_word)):
         if secret_word [i] in correct_guesses:
-            player_guessed_word += secret_word(i)
-            if player_guessed_word == secret_word:
+            player_guess += secret_word(i)
+            if player_guess == secret_word:
                 full_guess = True
     return full_guess
 
@@ -115,16 +116,16 @@ def spaceman(secret_word):
     
 
     #TODO: show the player information about the game according to the project spec
-    print("Welcome to Spaceman!")
+    print("Welcome to Spaceman!\n")
     number_of_letters = len(secret_word)
-    print(f"The secret word contains:{number_of_letters} letters")
+    print(f"The secret word contains: {number_of_letters} letters\n")
     
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
 
-    print(f"You have 7 incorrect guesses, please enter one letter per round") 
+    print(f"You have 7 incorrect guesses, please enter one letter per round\n") 
     while True:
         guess = input("Enter a letter: ")
-        if len(guess) != 1:
+        if len(guess) != 1 or isalpha(guess) != True:
             print("You can only enter ONE LETTER per round, please enter only one letter at a time")
         else:
             break
