@@ -92,15 +92,34 @@ def is_guess_in_word(guess_input, secret_word):
         secret_word (string): The secret word
 
     Returns:
-        list: append the guess_input into the correct and incorrect_guesses list
+        bool: if the guess is correct True and if it is nbot False
 
     '''
-    #TODO: check if the letter guess is in the secret word
+    # check if the letter guess is in the secret word
+    if guess_input in secret_word:
+        return True
+    else:
+        return False
 
+# Helper Function
+def guess_list_correct_incorrect(guess_input, secret_word):
+    """
+    A function to check if the guessed letter is in the secret word
+
+    Parameters:
+        guess_input (string): The letter the player guessed this round
+        secret_word (string): The secret word
+
+    Returns:
+        list: append the guess_input into the correct and incorrect_guesses list
+
+    """
     if guess_input in secret_word:
         correct_guesses.append(guess_input)
     else:
         incorrect_guesses.append(guess_input)
+
+
         
 def spaceman(secret_word):
     """
@@ -110,12 +129,12 @@ def spaceman(secret_word):
       secret_word (string): the secret word to guess.
 
     """
-    #TODO: show the player information about the game according to the project spec
+    # show the player information about the game according to the project spec
     print("\nWelcome to Spaceman!\n")
     
     print(f"The secret word contains: {secret_word_length} letters\n")
     
-    #TODO: Ask the player to guess one letter per round and check that it is only one letter
+    # Ask the player to guess one letter per round and check that it is only one letter
 
     print(f"You have {GUESSES_ALLOWED} incorrect guesses, please enter one letter per round\n") 
 
@@ -136,15 +155,20 @@ def spaceman(secret_word):
             else:
                 break
         # call the function before so that the guess show up in correct or incorrect_guesses list 
+        guess_list_correct_incorrect(guess_input, secret_word)
         is_guess_in_word(guess_input, secret_word)
-    
-        #TODO: show the guessed word so far
+
+        # show the guessed word so far
         print(f"\nGuessed word so far: {get_guessed_word(secret_word, correct_guesses)}")
 
-        #TODO: Check if the guessed letter is in the secret or not and give the player feedback
-        print(f"\nHere is the list of the correct guesses: {correct_guesses}")
+        # Check if the guessed letter is in the secret or not and give the player feedback
+        if is_guess_in_word(guess_input, secret_word) is True:
+            print('\n"Yay!! Your guess appears in the word!"')
+        print(f"\nHere is the list of the correct guesses so far: {correct_guesses}")
+        if is_guess_in_word(guess_input, secret_word) is False:
+            print('\n"Sorry your guess was not in the word."')
         print(f"\nHere is the list of the incorrect guesses: {incorrect_guesses}\n")
-    
+
         number_of_incorrect_guesses = len(incorrect_guesses) 
         guesses_left = GUESSES_ALLOWED - number_of_incorrect_guesses
 
@@ -152,13 +176,13 @@ def spaceman(secret_word):
 
         print("----------------------------------------------------------")
 
-        #TODO: check if the game has been won or lost
+        # check if the game has been won or lost
         if is_word_guessed(secret_word, correct_guesses) is True or number_of_incorrect_guesses == GUESSES_ALLOWED:
             if number_of_incorrect_guesses == GUESSES_ALLOWED:
-                print(f"\nSorry you Lost!!!\nThe word was: {secret_word}\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+                print(f'\n"Sorry you Lost!!!\nThe word was: {secret_word}"\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
                 game_on = False
             else:
-                print("\nCongrats, You Won!\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+                print('\n"Congrats, You Won!"\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
                 game_on = False
                 
 secret_word = load_word()
