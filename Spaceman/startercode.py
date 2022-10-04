@@ -1,5 +1,4 @@
 # for isalpha
-from ast import increment_lineno
 from curses.ascii import isalpha
 # to import random words from the file.
 import random
@@ -156,7 +155,7 @@ def spaceman(secret_word):
         #TODO: check if the game has been won or lost
         if is_word_guessed(secret_word, correct_guesses) is True or number_of_incorrect_guesses == GUESSES_ALLOWED:
             if number_of_incorrect_guesses == GUESSES_ALLOWED:
-                print(f"\nSorry you didn't win, try again!\nThe word was: {secret_word}\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+                print(f"\nSorry you Lost!!!\nThe word was: {secret_word}\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
                 game_on = False
             else:
                 print("\nCongrats, You Won!\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
